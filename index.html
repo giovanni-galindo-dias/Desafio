@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Inserção de Notas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: black;">
+
+    <div class="container mt-5">
+        
+        <!-- Título Bimestre 1 e Botão Lançar Nota -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            
+           
+            <div class="title">
+                <h2>Bimestre 1</h2>
+            </div>
+            <button class="btn btn-warning" id="PRIMEIRO" data-bs-toggle="modal" data-bs-target="#notaModal1">Lançar Nota</button>
+        </div>
+
+        <!-- Modal para lançar a nota -->
+        <div class="modal fade" id="notaModal1" tabindex="-1" aria-labelledby="notaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="PRIMEIRO">Lançar Nota</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <input type="hidden" id="bimestre" name="bimestre">  <!-- Campo oculto para armazenar o valor selecionado -->
+                    </div>
+                    <div class="modal-body">
+                        <!-- Botões com design semelhante aos cards -->
+                        <div class="row">
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="artes1">Artes</button>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="geografia1">Geografia</button>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="biologia1">Biologia</button>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="sociologia1">
+                                    Sociologia
+                                </button>
+                            </div>
+                            <input type="hidden" id="disciplina" name="disciplina"> 
+                        </div>
+        
+                        <!-- Campo de entrada para nota -->
+                        <div class="mt-3">
+                            <label for="notaInput" class="form-label">Nota:</label>
+                            <input type="number" step="0.01" class="form-control" id="notaInput" placeholder="Digite a nota...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="Confirmar" class="btn-modal">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards das matérias -->
+        <div class="row">
+            <!-- Artes -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="artes1">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Artes</h5>
+                    <h6 id="dataartes1" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text"> <i class="fas fa-chart-bar"></i>   nota:  <span id="artesNota1">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirArtes1" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+                
+
+            
+            
+            <!-- Geografia -->
+           
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="geografia1">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Artes</h5>
+                    <h6 id="datageo1" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text" id="g1"> <i class="fas fa-chart-bar"></i>   nota:  <span id="geoNota1">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirGeo1" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+            
+            <!-- Biologia -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="biologia1">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Biologia</h5>
+                    <h6 id="databio1" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text" id="b1"> <i class="fas fa-chart-bar"></i>   nota:  <span id="bioNota1">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirBio1" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+
+            <!-- Sociologia -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="sociologia1">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Sociologia</h5>
+                    <h6 id="datasoc1" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text" id="s1"> <i class="fas fa-chart-bar"></i>   nota:  <span id="socNota1">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirSoc1" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            
+            
+            <div class="title">
+                <h2>Bimestre 2</h2>
+            </div>
+            <button class="btn btn-warning" id="SEGUNDO" data-bs-toggle="modal" data-bs-target="#notaModal2">Lançar Nota</button>
+        </div>
+
+  
+      <!-- Modal para lançar a nota -->
+        <div class="modal fade" id="notaModal2" tabindex="-1" aria-labelledby="notaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="SEGUNDO">Lançar Nota</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Botões com design semelhante aos cards -->
+                    <div class="row">
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="artes2">
+                                    Artes
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="geografia2">
+                                    Geografia
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="biologia2">
+                                    Biologia
+                                </button>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <button class="btn btn-secondary w-100 h-100" id="sociologia2">
+                                    Sociologia
+                                </button>
+                            </div>
+                        </div>
+        
+                        <!-- Campo de entrada para nota -->
+                        <div class="mt-3">
+                            <label for="notaInput" class="form-label">Nota:</label>
+                            <input type="number" step="0.01" class="form-control" id="notaInput2" placeholder="Digite a nota...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="Confirmar2" class="btn-modal">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cards das matérias -->
+        <div class="row">
+            <!-- Artes -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="artes2">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Artes</h5>
+                    <h6 id="dataartes2" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text"  id="p2"> <i class="fas fa-chart-bar"></i>   nota:  <span id="artesNota2">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirArtes2" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+                
+
+            <!-- Geografia -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="geografia2">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Geografia</h5>
+                    <h6 id="datageo2" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text" id="g2"> <i class="fas fa-chart-bar"></i>   nota:  <span id="geoNota2">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirGeo2" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+
+            <!-- Biologia -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="biologia2">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Biologia</h5>
+                    <h6 id="databio2" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text" id="b2"> <i class="fas fa-chart-bar"></i>   nota:  <span id="bioNota2">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirBio2" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+
+            <!-- Sociologia -->
+            <div class="col-md-3 col-6 ">
+                <div class="card"  id="sociologia2">
+                   
+                   <div class="card-body">
+                    <h5 class="card-title">Sociologia</h5>
+                    <h6 id="datasoc2" class="card-subtitle">--/--/----</h6>
+                    <p class="card-text" id="s2"> <i class="fas fa-chart-bar"></i>   nota:  <span id="socNota2">   </span>
+                        <div></div>
+                    <button type="button"  id="excluirSoc2" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                    
+                </div>
+                
+                </div>
+            </div>
+        
+        
+        
+        
+        </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+            
+            
+                <div class="title">
+                    <h2>Bimestre 3</h2>
+                </div>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#notaModal3">Lançar Nota</button>
+            </div>
+    
+   
+      <!-- Modal para lançar a nota -->
+            <div class="modal fade" id="notaModal3" tabindex="-1" aria-labelledby="notaModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="notaModalLabel">Lançar Nota</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Botões com design semelhante aos cards -->
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="artes3">
+                                        Artes
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="geografia3">
+                                        Geografia
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="biologia3">
+                                        Biologia
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="sociologia3">
+                                        Sociologia
+                                    </button>
+                                </div>
+                            </div>
+            
+                            <!-- Campo de entrada para nota -->
+                            <div class="mt-3">
+                                <label for="notaInput" class="form-label">Nota:</label>
+                                <input type="number" step="0.01" class="form-control" id="notaInput3" placeholder="Digite a nota...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="Confirmar3" class="btn-modal">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cards das matérias -->
+            <div class="row">
+                <!-- Artes -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="artes3">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Artes</h5>
+                        <h6 id="dataartes3" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text"  id="p3"> <i class="fas fa-chart-bar"></i>   nota:  <span id="artesNota3">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirArtes3" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+    
+                <!-- Geografia -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="geografia3">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Geografia</h5>
+                        <h6 id="datageo3" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text" id="g3"> <i class="fas fa-chart-bar"></i>   nota:  <span id="geoNota3">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirGeo3" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+    
+                <!-- Biologia -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="biologia3">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Biologia</h5>
+                        <h6 id="databio3" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text" id="b3"> <i class="fas fa-chart-bar"></i>   nota:  <span id="bioNota3">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirBio3" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+    
+                <!-- Sociologia -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="sociologia3">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Sociologia</h5>
+                        <h6 id="datasoc3" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text" id="s3"> <i class="fas fa-chart-bar"></i>   nota:  <span id="socNota3">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirSoc3" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+            
+                </div>
+    
+                
+                
+            
+    
+
+
+
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+            
+            
+                <div class="title">
+   
+                 <h2>Bimestre 4</h2>
+                </div>
+                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#notaModal4">Lançar Nota</button>
+            </div>
+    
+            <!-- Modal para lançar a nota -->
+            <div class="modal fade" id="notaModal4" tabindex="-1" aria-labelledby="notaModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="notaModalLabel">Lançar Nota</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Botões com design semelhante aos cards -->
+                            <div class="row">
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="artes4">
+                                        Artes
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="geografia4">
+                                        Geografia
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="biologia4">
+                                        Biologia
+                                    </button>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <button class="btn btn-secondary w-100 h-100" id="sociologia4">
+                                        Sociologia
+                                    </button>
+                                </div>
+                            </div>
+            
+                            <!-- Campo de entrada para nota -->
+                            <div class="mt-3">
+                                <label for="notaInput" class="form-label">Nota:</label>
+                                <input type="number" step="0.01" class="form-control" id="notaInput4" placeholder="Digite a nota...">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="Confirmar4" class="btn-modal">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cards das matérias -->
+            <div class="row">
+                <!-- Artes -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="artes4">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Artes</h5>
+                        <h6 id="dataartes4" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text"  id="p4"> <i class="fas fa-chart-bar"></i>   nota:  <span id="artesNota4">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirArtes4" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+    
+                <!-- Geografia -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="geografia4">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Geografia</h5>
+                        <h6 id="datageo4" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text" id="g4"> <i class="fas fa-chart-bar"></i>   nota:  <span id="geoNota4">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirGeo4" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+    
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="biologia4">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Biologia</h5>
+                        <h6 id="databio4" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text" id="b4"> <i class="fas fa-chart-bar"></i>   nota:  <span id="bioNota4">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirBio4" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+                <!-- Sociologia -->
+                <div class="col-md-3 col-6 ">
+                    <div class="card"  id="sociologia4">
+                       
+                       <div class="card-body">
+                        <h5 class="card-title">Sociologia</h5>
+                        <h6 id="datasoc4" class="card-subtitle">--/--/----</h6>
+                        <p class="card-text" id="s4"> <i class="fas fa-chart-bar"></i>   nota:  <span id="socNota4">   </span>
+                            <div></div>
+                        <button type="button"  id="excluirSoc4" class="btn btn-danger float-right  "> <i class="fas fa-trash-alt"></i></button>
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+                
+            
+            
+            </div>
+            </div>
+    
+         
+    </div>
+</div>
+    <script src="/select.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>
